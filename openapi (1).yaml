@@ -1,0 +1,222 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+servers:
+  - url: http://127.0.0.1:8000/api
+paths:
+  /add-update-lead-newiterm:
+    post:
+      summary: First Page Of Iterm.
+      description: Optional extended description in CommonMark or HTML.
+      requestBody:
+        required: true
+        content:
+         application/json:
+            schema:
+              type: object
+              properties:
+                dob:
+                  type: string
+                email:
+                  type: string
+                gender:
+                  type: string
+                leadId:
+                  type: integer
+                mobile:
+                  type: string
+                name:
+                  type: string
+                source:
+                  type: string
+                dmsCode:
+                  type: string
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  status: 
+                    type: boolean
+                  response:
+                    type: object
+                    properties:
+                      leadId: 
+                        type: integer
+  /get-rule-validation:                
+    get:
+      summary: Get api for the first page of Iterm
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: object
+  /suggested-lifeCover:
+    post:
+      summary: Method to calculate Premium based on annual income, age and etc..
+      description: Optional extended description in CommonMark or HTML.
+      requestBody:
+        required: true
+        content:
+         application/json:
+            schema:
+              type: object
+              properties:
+                dob:
+                  type: string
+                email:
+                  type: string
+                annualIncome:
+                  type: integer
+                ineligibleIncome:
+                  type: integer
+                isSmoker:
+                  type: string
+                laPhFlag:
+                  type: string
+                leadId:
+                  type: integer
+                mobile:
+                  type: integer
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  status: 
+                    type: boolean
+                  response:
+                    type: object
+                    properties:
+                      lifeCover: 
+                        type: object
+                        properties:
+                         min:
+                          type: integer
+                         max:
+                          type: integer
+                      coverAge:
+                       type: integer  
+                      premiumBeforeTax:
+                       type: integer
+                      premiumAfterTax:
+                       type: integer
+                      tax:
+                       type: integer
+                      frequency:
+                       type: string
+                      leadId:
+                       type: integer
+                      pagetext:
+                        type: array
+                        items:
+                          type: object
+                        properties:
+                          benefitsInputName: 
+                            type: string
+                          benefitsName:
+                            type: string 
+                          benefitsDescription:
+                            type: string
+                      dedupe:
+                       type: object                                     
+                       properties:
+                        status: 
+                         type: integer
+                        message:
+                          type: string  
+  /know-your-premium:
+    post:
+      summary: Method to get lifeCover 
+      description: Optional extended description in CommonMark or HTML.         
+      requestBody:
+        required: true
+        content:
+         application/json:
+            schema:
+              type: object
+              properties:
+                dob:
+                  type: string
+                lifeCover:
+                  type: integer
+                annualIncome:
+                  type: integer
+                ineligibleIncome:
+                  type: integer
+                isSmoker:
+                  type: string
+                policyTerm:
+                  type: integer
+                leadId:
+                  type: integer
+                frequency:
+                  type: string 
+                fastTrackPayment:
+                  type: integer
+                premiumAfterTax:
+                 type: integer
+                premiumBeforeTax:
+                 type: integer
+                summaryCheck:
+                 type: integer
+                tax:
+                 type: integer
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  status: 
+                    type: boolean
+                  response:
+                    type: object
+                    properties:
+                      lifeCoverAmount: 
+                        type: integer
+                      frequency:
+                        type: array
+                        items:
+                          type: object
+                        properties:
+                          value:
+                           type: string
+                          text:
+                           type: string
+                      coverage:
+                       type: array
+                       items:
+                        type: object
+                        properties:
+                         min:
+                          type: string
+                       items:
+                        type: object
+                        properties:
+                          max:
+                           type: string
+                          upto:
+                           type: string
+                            
+      
+                         
+                            
+                           
+                          
+
+                       
+                       
